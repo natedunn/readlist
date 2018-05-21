@@ -1,2 +1,0 @@
-# readlist
-Created with CodeSandbox
