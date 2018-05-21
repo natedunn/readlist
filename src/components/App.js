@@ -20,20 +20,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="mw8 ml-auto mr-auto ba b--black-30 bg-white">
-        {console.log(this)}
+      <React.Fragment>
         <Header />
-        <main>
-          {/* Sidebar */}
-          <div className="sidebar fl w-20 pa4">
+        <div className="mw8 ml-auto mr-auto">
+          <div className="sidebar fl w-30 pa3">
             <Sidebar />
           </div>
-          {/* Main */}
-          <div className="fl w-80 pa4">
+          <main className="fl w-70 pa3">
             <Main lists={this.state.lists} createNewList={this.createNewList} />
-          </div>
-        </main>
-      </div>
+          </main>
+        </div>
+      </React.Fragment>
     );
   }
 }

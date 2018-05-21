@@ -3,6 +3,25 @@ import { Link } from "react-router-dom";
 import CreateNewList from "./CreateNewList";
 
 class MainList extends React.Component {
+  state = {
+    ui: {
+      createNewList: false
+    }
+  };
+  toggleCreateNewList() {
+    const stateCopy = { ...this.state };
+    stateCopy["ui"] = {
+      createNewList: true
+    };
+    this.setState({ stateCopy });
+  }
+  renderCreateNewList() {
+    if (this.state.createNewList) {
+      return <CreateNewList createNewList={this.props.createNewList} />;
+    } else {
+      return <a onClick={this.toggleCreateNewList}>Create a new list</a>;
+    }
+  }
   render() {
     return (
       <div>
@@ -14,7 +33,7 @@ class MainList extends React.Component {
             </li>
           ))}
         </ul>
-        <CreateNewList createNewList={this.props.createNewList} />
+        {this.renderCreateNewList()}
       </div>
     );
   }

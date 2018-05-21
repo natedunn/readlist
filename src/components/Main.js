@@ -8,7 +8,6 @@ class Main extends React.Component {
   render() {
     return (
       <Switch>
-        {console.log(this)}
         <Route
           exact
           path="/"

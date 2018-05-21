@@ -1,8 +1,14 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
+import ProfileCard from "./ProfileCard";
 
 class Sidebar extends React.Component {
   render() {
-    return <h1>This is the sidebar</h1>;
+    return (
+      <Switch>
+        <Route path="/" component={ProfileCard} />
+      </Switch>
+    );
   }
 }
 

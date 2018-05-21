@@ -6,12 +6,7 @@ const Router = () => (
   <BrowserRouter>
     <Switch>
       {["/", "/list", "/list/:listId", "/test"].map((path, index) => (
-        <Route
-          path={path}
-          history={history}
-          key={index}
-          render={props => <App history={history} {...props} />}
-        />
+        <Route path={path} key={index} render={props => <App {...props} />} />
       ))}
     </Switch>
   </BrowserRouter>
