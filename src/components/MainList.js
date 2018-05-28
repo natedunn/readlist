@@ -1,40 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CreateNewList from './CreateNewList';
+import CreateList from './CreateList';
 
 class MainList extends React.Component {
   constructor() {
     super();
     this.state = {
       ui: {
-        createNewListOpen: false
+        createListOpen: false
       }
     };
   }
 
-  toggleCreateNewList = boolean => {
+  toggleCreateList = boolean => {
     var ui = { ...this.state.ui };
     ui = {
-      createNewListOpen: boolean
+      createListOpen: boolean
     };
     this.setState({ ui });
   };
 
-  renderCreateNewList() {
-    if (this.state.ui.createNewListOpen) {
+  handleClickDelete = key => {
+    this.props.deleteList(key);
+  }
+
+  rendercreateList() {
+    if (this.state.ui.createListOpen) {
       return (
         <div>
-          <CreateNewList
+          <CreateList
             ui={this.state.ui}
-            createNewList={this.props.createNewList}
-            toggleCreateNewList={this.toggleCreateNewList}
+            createList={this.props.createList}
+            toggleCreateList={this.toggleCreateList}
           />
         </div>
       );
     } else {
       return (
         <div className="bg-white pa3 br2">
-          <a href={undefined} onClick={() => this.toggleCreateNewList(true)}>
+          <a href={undefined} onClick={() => this.toggleCreateList(true)}>
             + Create a new list
           </a>
         </div>
@@ -48,12 +52,17 @@ class MainList extends React.Component {
         <h1 className="pl3 pr3">All lists</h1>
         <ul className="list pl0">
           {Object.keys(this.props.lists).map(key => (
-            <li className="bg-white pa3 mb2 br2" key={key}>
-              <Link to={`/list/${key}`}>{this.props.lists[key].name}</Link>
+            <li className="bg-white pa3 mb2 br2 flex" key={key}>
+              <div className="w-50">
+                <Link to={`/list/${key}`}>{this.props.lists[key].name}</Link>
+              </div>
+              <div className="w-50 tr">
+                <a href={undefined} onClick={() => this.handleClickDelete(key)}>Delete</a>
+              </div>
             </li>
           ))}
         </ul>
-        {this.renderCreateNewList()}
+        {this.rendercreateList()}
       </React.Fragment>
     );
   }

@@ -1,11 +1,11 @@
 import React from 'react';
 
-class CreateNewList extends React.Component {
+class CreateList extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createNewList(this.newListInput.value);
+    this.props.createList(this.newListInput.value);
     e.currentTarget.reset();
-    this.props.toggleCreateNewList(false);
+    this.props.toggleCreateList(false);
   };
 
   render() {
@@ -31,4 +31,4 @@ class CreateNewList extends React.Component {
   }
 }
 
-export default CreateNewList;
+export default CreateList;

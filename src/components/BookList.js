@@ -3,12 +3,26 @@ import SearchBar from './SearchBar';
 import BookItem from './BookItem';
 
 class BookList extends React.Component {
+
+  handleClickDelete = key => {
+    this.props.deleteList(key);
+    this.props.history.push(`/`);
+  }
+
   renderTitle() {
     const listId = this.props.match.params.listId;
     if (this.props.lists.hasOwnProperty(listId)) {
       return (
         <React.Fragment>
-          <h1 className="pl3 pr3">{this.props.lists[listId].name}</h1>
+          <div className="flex">
+            <div className="w-50">
+              <h1 className="pl3 pr3">{this.props.lists[listId].name}</h1>
+            </div>
+            <div className="w-50">
+              <button onClick={() => this.handleClickDelete(listId)}>Delete</button>
+            </div>
+          </div>
+
           <div className="pl3 pr3 pb3">
             <SearchBar />
           </div>
@@ -46,10 +60,10 @@ class BookList extends React.Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         {this.renderTitle()}
         {this.renderBody()}
-      </div>
+      </React.Fragment>
     );
   }
 }

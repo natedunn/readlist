@@ -15,14 +15,15 @@ class Main extends React.Component {
             <MainList
               lists={this.props.lists}
               {...props}
-              createNewList={this.props.createNewList}
+              createList={this.props.createList}
+              deleteList={this.props.deleteList}
             />
           )}
         />
         <Route
           exact
           path="/list/:listId"
-          render={props => <BookList lists={this.props.lists} {...props} />}
+          render={props => <BookList {...props} lists={this.props.lists} deleteList={this.props.deleteList}/>}
         />
         <Route component={NotFound} />
       </Switch>

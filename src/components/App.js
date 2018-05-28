@@ -27,9 +27,10 @@ class App extends React.Component {
     this.setState({ users: sampleData.users })
   };
 
-  createNewList = newName => {
+  createList = newName => {
     const lists = { ...this.state.users.testUser.lists };
-    lists[`list${Date.now()}`] = {
+    const key = 'list' + Date.now();
+    lists[key] = {
       name: newName,
       books: {}
     };
@@ -40,13 +41,36 @@ class App extends React.Component {
         }
       }
     });
+    this.props.history.push(`list/${key}`);
+  };
+
+  deleteList = key => {
+    const lists = { ...this.state.users.testUser.lists };
+    lists[key] = null;
+    this.setState({
+      users: {
+        testUser: {
+          lists: lists
+        }
+      }
+    });
+  };
+
+  renameList = key => {
+
   };
 
   renderMainList = () => {
     // if(this.state.users.testUser.lists.length) {
     if (this._mounted === true) {
       if(this.state.users.testUser.lists) {
-        return <Main lists={this.state.users.testUser.lists} createNewList={this.createNewList} />
+        return (
+          <Main
+            lists={this.state.users.testUser.lists}
+            createList={this.createList}
+            deleteList={this.deleteList}
+          />
+        )
       } else {
         return (
           <React.Fragment>
