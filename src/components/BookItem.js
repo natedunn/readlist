@@ -1,5 +1,5 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
 class BookItem extends React.Component {
   componentWillMount() {
@@ -17,7 +17,7 @@ class BookItem extends React.Component {
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes?key=AIzaSyBCFbo7v3g_o8UCJ34ns9COvbahi0yfvIo&q=isbn:` +
-          this.props.details.isbn
+          this.props.index
       )
       .then(response => {
         this.setState({ info: response.data });
@@ -28,11 +28,11 @@ class BookItem extends React.Component {
   };
 
   render() {
-    let bookTitle = 'Loading...';
-    let bookImgUrl = '';
-    let bookAuthor = 'Loading...';
-    let bookDate = '';
-    let bookDesc = 'Loading...';
+    let bookTitle = "Loading...";
+    let bookImgUrl = "";
+    let bookAuthor = "Loading...";
+    let bookDate = "";
+    let bookDesc = "Loading...";
     if (this.state.info.length === undefined) {
       const volumeInfo = this.state.info.items[0].volumeInfo;
       bookTitle = volumeInfo.title;

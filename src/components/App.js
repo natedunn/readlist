@@ -2,18 +2,20 @@ import React from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Sidebar from "./Sidebar";
-import sampleData from '../sampleData';
+import sampleData from "../sampleData";
 import base from "../base";
 
 class App extends React.Component {
   state = {
-    users: {}
+    users: {
+      testUser: {}
+    }
   };
 
   componentDidMount() {
     this.ref = base.syncState(`users`, {
       context: this,
-      state: 'users'
+      state: "users"
     });
     this._mounted = true;
   }
@@ -24,15 +26,15 @@ class App extends React.Component {
   }
 
   loadSampleData = () => {
-    this.setState({ users: sampleData.users })
+    this.setState({ users: sampleData.users });
   };
 
   createList = newName => {
     const lists = { ...this.state.users.testUser.lists };
-    const key = 'list' + Date.now();
+    const key = "list" + Date.now();
     lists[key] = {
       name: newName,
-      books: {}
+      books: [{}]
     };
     this.setState({
       users: {
@@ -56,34 +58,51 @@ class App extends React.Component {
     });
   };
 
-  renameList = key => {
+  addBookToList = (key, isbn) => {
+    const lists = { ...this.state.users.testUser.lists };
+    // const test = {
+    //   [isbn]: "isbn",
+    //   [key]: "key"
+    // };
 
+    lists[key].books = {
+      [isbn]: {}
+    };
+    console.log(lists);
+    this.setState({
+      users: {
+        testUser: {
+          lists: lists
+        }
+      }
+    });
   };
 
   renderMainList = () => {
-    // if(this.state.users.testUser.lists.length) {
     if (this._mounted === true) {
-      if(this.state.users.testUser.lists) {
-        return (
-          <Main
-            lists={this.state.users.testUser.lists}
-            createList={this.createList}
-            deleteList={this.deleteList}
-          />
-        )
+      if (this.state.users.testUser !== undefined) {
+        if (this.state.users.testUser.lists !== undefined) {
+          return (
+            <Main
+              lists={this.state.users.testUser.lists}
+              addBookToList={this.addBookToList}
+              createList={this.createList}
+              deleteList={this.deleteList}
+            />
+          );
+        }
       } else {
         return (
           <React.Fragment>
+            {console.log(this)}
             <h1>You don't have any lists yet!</h1>
-            <br/>
-            <a onClick={this.props.loadSampleData}>Load Sample Data</a>
+            <br />
+            <button onClick={this.loadSampleData}>Load Sample Data</button>
           </React.Fragment>
         );
       }
     } else {
-      return (
-        <h2>Loading lists...</h2>
-      );
+      return <h2>Loading lists...</h2>;
     }
   };
 
@@ -95,9 +114,7 @@ class App extends React.Component {
           <div className="sidebar fl w-30 pa3">
             <Sidebar />
           </div>
-          <main className="fl w-70 pa3">
-            {this.renderMainList()}
-          </main>
+          <main className="fl w-70 pa3">{this.renderMainList()}</main>
         </div>
       </React.Fragment>
     );

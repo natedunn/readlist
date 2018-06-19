@@ -1,13 +1,12 @@
-import React from 'react';
-import SearchBar from './SearchBar';
-import BookItem from './BookItem';
+import React from "react";
+import SearchBar from "./SearchBar";
+import BookItem from "./BookItem";
 
 class BookList extends React.Component {
-
   handleClickDelete = key => {
     this.props.deleteList(key);
     this.props.history.push(`/`);
-  }
+  };
 
   renderTitle() {
     const listId = this.props.match.params.listId;
@@ -19,12 +18,16 @@ class BookList extends React.Component {
               <h1 className="pl3 pr3">{this.props.lists[listId].name}</h1>
             </div>
             <div className="w-50">
-              <button onClick={() => this.handleClickDelete(listId)}>Delete</button>
+              <button onClick={() => this.handleClickDelete(listId)}>
+                Delete
+              </button>
             </div>
           </div>
-
           <div className="pl3 pr3 pb3">
-            <SearchBar />
+            <SearchBar
+              addBookToList={this.props.addBookToList}
+              listId={listId}
+            />
           </div>
         </React.Fragment>
       );
@@ -39,13 +42,13 @@ class BookList extends React.Component {
         return (
           <div className="pl3 pr3 pb3">
             <ul className="list pl0">
-              {Object.keys(this.props.lists[listId].books).map(key =>
+              {Object.keys(this.props.lists[listId].books).map(key => (
                 <BookItem
-                  key={this.props.lists[listId].books[key].info.isbn}
-                  index={this.props.lists[listId].books[key].info.isbn}
-                  details={this.props.lists[listId].books[key].info}
+                  key={key}
+                  index={key}
+                  info={this.props.lists[listId].books[key]}
                 />
-              )}
+              ))}
             </ul>
           </div>
         );

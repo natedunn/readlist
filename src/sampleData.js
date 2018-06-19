@@ -4,25 +4,29 @@ const sampleData = {
       lists: {
         testList: {
           name: "School List",
-          books: [
-            {
-              info: {
-                isbn: 9780770430078
-              },
-              reviews: {},
-              notes: {},
-              ratings: {}
+          books: {
+            9780770430078: {
+              title: "",
+              image: ""
             },
-            {
-              info: {
-                isbn: 9780375507250
-              },
-              reviews: {},
-              notes: {},
-              ratings: {}
+            9780375507250: {
+              title: "",
+              image: ""
             }
-          ]
+          }
+        }
+      },
+      books: {
+        9780770430078: {
+          reviews: {},
+          ratings: {},
+          notes: {}
         },
+        9780375507250: {
+          reviews: {},
+          ratings: {},
+          notes: {}
+        }
       },
       userInfo: {},
       followers: {},
