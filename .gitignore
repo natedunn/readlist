@@ -251,3 +251,6 @@ freeline_project_description.json
 
 
 # End of https://www.gitignore.io/api/osx,node,reactnative
+
+# Added Manually
+*.todo
