@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import CreateList from './CreateList';
+import React from "react";
+import { Link } from "react-router-dom";
+import CreateList from "./CreateList";
 
-class MainList extends React.Component {
+class ListArchive extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -22,7 +22,7 @@ class MainList extends React.Component {
 
   handleClickDelete = key => {
     this.props.deleteList(key);
-  }
+  };
 
   rendercreateList() {
     if (this.state.ui.createListOpen) {
@@ -57,7 +57,9 @@ class MainList extends React.Component {
                 <Link to={`/list/${key}`}>{this.props.lists[key].name}</Link>
               </div>
               <div className="w-50 tr">
-                <a href={undefined} onClick={() => this.handleClickDelete(key)}>Delete</a>
+                <a href={undefined} onClick={() => this.handleClickDelete(key)}>
+                  Delete
+                </a>
               </div>
             </li>
           ))}
@@ -68,4 +70,4 @@ class MainList extends React.Component {
   }
 }
 
-export default MainList;
+export default ListArchive;
