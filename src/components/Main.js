@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import MainList from "./MainList";
+import ListArchive from "./ListArchive";
 import BookList from "./BookList";
 import NotFound from "./NotFound";
 
@@ -12,7 +12,7 @@ class Main extends React.Component {
           exact
           path="/"
           render={props => (
-            <MainList
+            <ListArchive
               lists={this.props.lists}
               {...props}
               createList={this.props.createList}
