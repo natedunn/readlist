@@ -81,7 +81,7 @@ class App extends React.Component {
     });
   };
 
-  renderMainList = () => {
+  renderListArchive = () => {
     if (this._mounted === true) {
       if (this.state.users.testUser !== undefined) {
         if (this.state.users.testUser.lists !== undefined) {
