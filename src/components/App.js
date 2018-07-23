@@ -1,5 +1,6 @@
 // Dependencies
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 // Components
 import Header from "./Header";
 import Main from "./Main";
@@ -104,7 +105,15 @@ class App extends React.Component {
         );
       }
     } else {
-      return <h2>Loading lists...</h2>;
+      return (
+        <Fragment>
+          <h2>Loading lists...</h2>
+          <p>
+            If this message does not go away please try refreshing your page or
+            view our <Link to={`/`}>help page</Link>.
+          </p>
+        </Fragment>
+      );
     }
   };
 
