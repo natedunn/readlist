@@ -97,7 +97,6 @@ class App extends React.Component {
       } else {
         return (
           <React.Fragment>
-            {console.log(this)}
             <h1>You don't have any lists yet!</h1>
             <br />
             <button onClick={this.loadSampleData}>Load Sample Data</button>
