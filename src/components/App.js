@@ -71,7 +71,7 @@ class App extends React.Component {
     lists[key].books = {
       [isbn]: {}
     };
-    console.log(lists);
+
     this.setState({
       users: {
         testUser: {
