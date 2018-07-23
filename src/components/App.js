@@ -97,11 +97,11 @@ class App extends React.Component {
         }
       } else {
         return (
-          <React.Fragment>
+          <Fragment>
             <h1>You don't have any lists yet!</h1>
             <br />
             <button onClick={this.loadSampleData}>Load Sample Data</button>
-          </React.Fragment>
+          </Fragment>
         );
       }
     } else {
