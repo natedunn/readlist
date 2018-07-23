@@ -1,9 +1,12 @@
-import React from "react";
+// Dependencies
+import React, { Fragment } from "react";
+// Components
 import Header from "./Header";
 import Main from "./Main";
-import Sidebar from "./Sidebar";
-import sampleData from "../sampleData";
+// Firebase
 import base from "../base";
+// Sample data
+import sampleData from "../sampleData";
 
 class App extends React.Component {
   state = {
