@@ -111,15 +111,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <Header loadSampleData={this.loadSampleData} />
-        <div className="flex mw8 ml-auto mr-auto">
-          <div className="sidebar fl w-30 pa3">
-            <Sidebar />
-          </div>
-          <main className="fl w-70 pa3">{this.renderMainList()}</main>
-        </div>
-      </React.Fragment>
+        <main className="mw6 ml-auto mr-auto">{this.renderListArchive()}</main>
+      </Fragment>
     );
   }
 }
