@@ -5,7 +5,7 @@ import App from "./App";
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      {["/", "/list", "/list/:listId", "/test"].map((path, index) => (
+      {["/", "/list", "/list/:listId"].map((path, index) => (
         <Route path={path} key={index} render={props => <App {...props} />} />
       ))}
     </Switch>
