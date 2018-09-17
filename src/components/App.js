@@ -121,7 +121,7 @@ class App extends React.Component {
     return (
       <Fragment>
         <Header loadSampleData={this.loadSampleData} />
-        <main className="mw6 ml-auto mr-auto">{this.renderListArchive()}</main>
+        <main className="mw7 ml-auto mr-auto">{this.renderListArchive()}</main>
       </Fragment>
     );
   }

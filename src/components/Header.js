@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 class Header extends React.Component {
   render() {
     return (
-      <header className="mw6 ml-auto mr-auto mt3 bb b--blue">
+      <header className="mw7 ml-auto mr-auto mt3 bb b--blue">
         <nav className="flex pt3 pb3">
           <Link className="flex-auto dib b" to={`/`}>
             Readlist
