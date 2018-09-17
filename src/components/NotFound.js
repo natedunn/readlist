@@ -2,8 +2,7 @@ import React from "react";
 
 const NotFound = () => (
   <div class="pa4">
-    <h1>404</h1>
-    <h2>That page was not found</h2>
+    <h2>That page was not found. Maybe try a search.</h2>
   </div>
 );
 

@@ -82,46 +82,52 @@ class App extends React.Component {
     });
   };
 
-  renderListArchive = () => {
-    if (this._mounted === true) {
-      if (this.state.users.testUser !== undefined) {
-        if (this.state.users.testUser.lists !== undefined) {
-          return (
-            <Main
-              lists={this.state.users.testUser.lists}
-              addBookToList={this.addBookToList}
-              createList={this.createList}
-              deleteList={this.deleteList}
-            />
-          );
-        }
-      } else {
-        return (
-          <Fragment>
-            <h1>You don't have any lists yet!</h1>
-            <br />
-            <button onClick={this.loadSampleData}>Load Sample Data</button>
-          </Fragment>
-        );
-      }
-    } else {
-      return (
-        <Fragment>
-          <h2>Loading lists...</h2>
-          <p>
-            If this message does not go away please try refreshing your page or
-            view our <Link to={`/`}>help page</Link>.
-          </p>
-        </Fragment>
-      );
-    }
-  };
+  // renderListArchive = () => {
+  //   if (this._mounted === true) {
+  //     if (this.state.users.testUser !== undefined) {
+  //       if (this.state.users.testUser.lists !== undefined) {
+  //         return (
+  //           <Main
+  //             lists={this.state.users.testUser.lists}
+  //             addBookToList={this.addBookToList}
+  //             createList={this.createList}
+  //             deleteList={this.deleteList}
+  //           />
+  //         );
+  //       }
+  //     } else {
+  //       return (
+  //         <Fragment>
+  //           <h1>You don't have any lists yet!</h1>
+  //           <br />
+  //           <button onClick={this.loadSampleData}>Load Sample Data</button>
+  //         </Fragment>
+  //       );
+  //     }
+  //   } else {
+  //     return (
+  //       <Fragment>
+  //         <h2>Loading lists...</h2>
+  //         <p>
+  //           If this message does not go away please try refreshing your page or
+  //           view our <Link to={`/`}>help page</Link>.
+  //         </p>
+  //       </Fragment>
+  //     );
+  //   }
+  // };
 
   render() {
     return (
       <Fragment>
-        <Header loadSampleData={this.loadSampleData} />
-        <main className="mw7 ml-auto mr-auto">{this.renderListArchive()}</main>
+        <Header />
+        <Main
+          lists={this.state.users.testUser.lists}
+          addBookToList={this.addBookToList}
+          createList={this.createList}
+          deleteList={this.deleteList}
+        />
+        {/* <main className="mw7 ml-auto mr-auto">{this.renderListArchive()}</main> */}
       </Fragment>
     );
   }

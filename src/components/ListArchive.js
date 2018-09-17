@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import CreateList from "./CreateList";
 
@@ -10,6 +10,10 @@ class ListArchive extends React.Component {
         createListOpen: false
       }
     };
+  }
+
+  componentDidMount() {
+    this._mounted = true;
   }
 
   toggleCreateList = boolean => {
@@ -48,10 +52,10 @@ class ListArchive extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <h1 className="pl3 pr3">All lists</h1>
+      <Fragment>
         <ul className="list pl0">
-          {Object.keys(this.props.lists).map(key => (
+          {console.log(this.props.lists)}
+          {/* {Object.keys(this.props.lists).map(key => (
             <li className="bg-white pa3 mb2 br2 flex" key={key}>
               <div className="w-50">
                 <Link to={`/list/${key}`}>{this.props.lists[key].name}</Link>
@@ -62,10 +66,10 @@ class ListArchive extends React.Component {
                 </a>
               </div>
             </li>
-          ))}
+          ))} */}
         </ul>
         {this.rendercreateList()}
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
